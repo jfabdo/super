@@ -32,14 +32,26 @@ def placeimg2(img1,img2,times):
         dst = cv.add(img1_bg,img3_fg)
         img1[ycoord:ycoord + rows3, xcoord:xcoord + cols3] = dst
 
+
 spider = cv.imread('../../doodles/spider 2.png')
 assert spider is not None, "no spider pic"
 
-#np.zeros((500,height*30,3)
-canvas = np.zeros((500,500,3),dtype=np.uint8)
+spiderr = cv.imread('../../doodles/spider 2r.png')
+assert spiderr is not None, "no spider pic"
 
-placeimg2(canvas,spider, 100)
+height = 2048
+canvas = np.zeros((height*30,500,3), dtype=np.uint8)
+# canvas = np.zeros((500,500,3),dtype=np.uint8)
+e1 = cv.getTickCount()
+for _ in range(100):
+    placeimg2(canvas,spider, 50)
+    placeimg2(canvas,spiderr, 50)
+e2 = cv.getTickCount()
+time = (e2 - e1)/ cv.getTickFrequency()
+print(time)
+for i in range(30):
+    cv.imwrite(f'spidershow{i+1}.png',canvas[i*height:i*height+height-1,:])
 
-cv.imshow('canvas',canvas)
-cv.waitKey(0)
-cv.destroyAllWindows()
+# cv.imshow('canvas',canvas[i*height:i*(height+1)-1,0:500])
+# cv.waitKey(0)
+# cv.destroyAllWindows()
