@@ -26,7 +26,7 @@ def placeimg2(img1,img2,times):
         mask_inv = cv.bitwise_not(mask)
         
         roi = img1[ycoord:ycoord + rows3, xcoord:xcoord + cols3]
-        print(xcoord,ycoord,rows3,cols3,size)
+        # print(xcoord,ycoord,rows3,cols3,size)
         img1_bg = cv.bitwise_and(roi,roi,mask = mask_inv)
         img3_fg = cv.bitwise_and(img3,img3,mask = mask)
         dst = cv.add(img1_bg,img3_fg)
