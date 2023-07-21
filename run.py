@@ -37,7 +37,7 @@ spider = cv.imread('../../doodles/spider 2.png')
 assert spider is not None, "no spider pic"
 
 spiderr = cv.imread('../../doodles/spider 2r.png')
-assert spiderr is not None, "no spider pic"
+assert spiderr is not None, "no spiderr pic"
 
 height = 2048
 canvas = np.zeros((height*30,500,3), dtype=np.uint8)
@@ -50,7 +50,7 @@ e2 = cv.getTickCount()
 time = (e2 - e1)/ cv.getTickFrequency()
 print(time)
 for i in range(30):
-    cv.imwrite(f'spidershow{i+1}.png',canvas[i*height:i*height+height-1,:])
+    cv.imwrite(f'spidershow{i+1}.png',canvas[height*i:height*(i+1)-1,:])
 
 # cv.imshow('canvas',canvas[i*height:i*(height+1)-1,0:500])
 # cv.waitKey(0)
